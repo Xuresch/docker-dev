@@ -132,13 +132,13 @@ You can now use the following commands to run `npm` or `npx` inside the containe
 #### Run npx (e.g., creating a new Next.js project)
 
 ```bash
-docker-compose -f docker-dev/docker-compose.yml run --volume /root/git/:/app --rm mynpx create-next-app@latest
+docker-compose -f docker-dev/docker-compose.yml run --volume /project/to/:/app --rm mynpx create-next-app@latest
 ```
 
 #### Run npm (e.g., installing dependencies)
 
 ```bash
-docker-compose -f docker-dev/docker-compose.yml run --volume /root/git/:/app --rm mynpm install
+docker-compose -f docker-dev/docker-compose.yml run --volume /project/to/:/app --rm mynpm install
 ```
 
 You can also use other npm commands like `npm init` or any `npm` related task by substituting the command in the last argument.
@@ -160,10 +160,10 @@ docker build . -t {your-project-tag}
 To run the development server, use the following command:
 
 ```bash
-docker run -v /root/git/test/src:/app/src --name devserver_1 -p 3000:3000 --rm -it {your-project-tag}
+docker run -v /project/to/src:/app/src --name {container-name} -p 3000:3000 --rm -it {your-project-tag}
 ```
 
-This will run the server on port `3000`, and the container will automatically update as you make changes to the files in the `/root/git/test/src` directory.
+This will run the server on port `3000`, and the container will automatically update as you make changes to the files in the `/project/to/src` directory.
 
 ---
 
@@ -192,20 +192,20 @@ This ensures that unnecessary files, such as local `node_modules`, are not inclu
 2. **Run npx commands (e.g., create-next-app):**
 
     ```bash
-    docker-compose -f docker-dev/docker-compose.yml run --volume /root/git/:/app --rm mynpx create-next-app@latest
+    docker-compose -f docker-dev/docker-compose.yml run --volume /project/to/src:/app --rm mynpx create-next-app@latest
     ```
 
 3. **Run npm commands (e.g., install dependencies):**
 
     ```bash
-    docker-compose -f docker-dev/docker-compose.yml run --volume /root/git/:/app --rm mynpm install
+    docker-compose -f docker-dev/docker-compose.yml run --volume /project/to/src:/app --rm mynpm install
     ```
 
 4. **Build and run the development server:**
 
     ```bash
     docker build . -t {your-project-tag}
-    docker run -v /root/git/test/src:/app/src --name devserver_1 -p 3000:3000 --rm -it {your-project-tag}
+    docker run -v /project/to/src/src:/app/src --name {container-name} -p 3000:3000 --rm -it {your-project-tag}
     ```
 
 This documentation should cover the basic usage of Docker as a development tool in your project.
