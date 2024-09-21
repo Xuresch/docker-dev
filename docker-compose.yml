@@ -1,0 +1,16 @@
+services:
+  mynpx:
+    build: ./Dockerfiles/mynpx/.
+    image: mynpx:latest
+    container_name: mynpx
+    tty: true
+    stdin_open: true
+    restart: always
+  mynpm:
+    build: ./Dockerfiles/mynpm/.
+    image: mynpm:latest
+    container_name: mynpm
+    tty: true
+    stdin_open: true
+    restart: always
+
